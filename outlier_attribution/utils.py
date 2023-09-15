@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import io, os, sys, time, random
-import numpy as np
+import io, os, random
 import pickle
 import torch
 from torch.utils.data import IterableDataset, DataLoader
 
 from itertools import chain
+from spender import load_model as _load_model
+
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 class CPU_Unpickler(pickle.Unpickler):
@@ -86,3 +89,11 @@ def get_latent_data_loader(
         files, load_fct, shuffle=shuffle, shuffle_instance=shuffle_instance
     )
     return DataLoader(data, batch_size=batch_size)
+
+
+def load_desi_model(url, **kwargs):
+    from spender.data.desi import DESI
+
+    instrument = DESI()
+    model = _load_model(url, instrument, **kwargs)
+    return instrument, model

@@ -93,30 +93,16 @@ class NeuralDensityEstimator(object):
             batch_theta = torch.tensor(batch_theta, device=self.device)
         self.batch_theta = batch_theta
 
-        if self.method == "maf":
-            self.net = build_maf(
-                batch_x=batch_theta,
-                z_score_x=self.normalize,
-                initial_pos=self.initial_pos,
-                hidden_features=self.hidden_features,
-                num_transforms=self.num_transforms,
-                embedding_net=self.embedding_net,
-                device=self.device,
-                **kwargs,
-            )
-        elif self.method == "nsf":
-            self.net, self.mean_init = build_nsf(
-                batch_x=batch_theta,
-                z_score_x=self.normalize,
-                initial_pos=self.initial_pos,
-                hidden_features=self.hidden_features,
-                num_transforms=self.num_transforms,
-                num_bins=self.num_bins,
-                embedding_net=self.embedding_net,
-                device=self.device,
-                **kwargs,
-            )
-
+        self.net = build_maf(
+            batch_x=batch_theta,
+            z_score_x=self.normalize,
+            initial_pos=self.initial_pos,
+            hidden_features=self.hidden_features,
+            num_transforms=self.num_transforms,
+            embedding_net=self.embedding_net,
+            device=self.device,
+            **kwargs,
+        )
         self.net.to(self.device)
 
         if optimizer == "adam":
@@ -246,7 +232,6 @@ def build_maf(
             low=np.array(initial_pos["bounds"])[:, 0],
             high=np.array(initial_pos["bounds"])[:, 1],
         )
-        print(_mean)
         transform_init = transforms.AffineTransform(
             shift=torch.Tensor(-_mean) / torch.Tensor(initial_pos["std"]),
             scale=1.0 / torch.Tensor(initial_pos["std"]),
