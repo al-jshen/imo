@@ -161,3 +161,7 @@ cython_debug/
 
 gmon.out
 .virtual_documents
+figures
+src
+*.out
+*.err
