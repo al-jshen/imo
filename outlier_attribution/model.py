@@ -19,6 +19,9 @@ class OutlierModel(torch.nn.Module):
         lp = self.flow.net.log_prob(s)
         return lp
 
+    def reconstruct(self, x, z):
+        return self.autoencoder(x.unsqueeze(0), z=z).squeeze(0)
+
     @classmethod
     def from_weights(cls, ae_weights, flow_weights, device=device):
 
