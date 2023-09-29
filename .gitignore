@@ -165,3 +165,4 @@ figures
 src
 *.out
 *.err
+notebooks/*.pdf
