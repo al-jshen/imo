@@ -11,4 +11,4 @@ cd imo
 pip install -r requirements.txt
 ```
 
-Take a look at [notebooks/attribution.ipynb](notebooks/attribution.ipynb) for an example. All weights and sample data necessary are included in this repository.
+Take a look at [notebooks/attributions.ipynb](notebooks/attributions.ipynb) for an example. All weights and sample data necessary are included in this repository.
