@@ -1,6 +1,6 @@
 import torch
-from outlier_attribution.flow import NeuralDensityEstimator
-from outlier_attribution.utils import load_desi_model
+from imo.flow import NeuralDensityEstimator
+from imo.utils import load_desi_model
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -25,7 +25,7 @@ class OutlierModel(torch.nn.Module):
     @classmethod
     def from_weights(cls, ae_weights, flow_weights, device=device):
 
-        _, ae = load_desi_model(ae_weights)
+        _, ae = load_desi_model(ae_weights, map_location=torch.device(device))
         ae = ae.to(device)
         n_latent = ae.encoder.n_latent
 
