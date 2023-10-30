@@ -15,7 +15,7 @@ from captum.attr import (
 from spender.data.desi import DESI
 from tqdm import tqdm
 
-from outlier_attribution.model import OutlierModel
+from imo.model import OutlierModel
 import warnings
 
 warnings.filterwarnings("ignore")
