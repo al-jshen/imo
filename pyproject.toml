@@ -1,6 +1,16 @@
-[project]
-name = "outlier_attribution"
-version = "0.0.1"
+[tool.poetry]
+name = "imo"
+version = "0.1.0"
+description = "Multiscale feature attribution method designed for outliers"
+authors = ["Jeff Shen <shenjeff@princeton.edu>"]
+license = "MIT"
+readme = "README.md"
 
-[tool.setuptools]
-py-modules = ["outlier_attribution"]
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = "^2"
+numpy = "^1.25"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
