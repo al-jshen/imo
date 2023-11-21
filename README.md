@@ -1,6 +1,6 @@
 # Inverse Multiscale Occlusion (IMO): a multiscale feature attribution method for outliers
 
-Paper: [ARXIV LINK HERE]
+Paper: [https://arxiv.org/abs/2310.20012](https://arxiv.org/abs/2310.20012)
 
 This feature attribution method can be used to explain a model that takes in some inputs and returns a scalar logP with the probability of the inputs relative to the training sample. This repository contains an implementation of IMO applied to a spectroscopic outlier detection model.
 
